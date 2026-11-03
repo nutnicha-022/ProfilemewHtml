@@ -1,41 +1,211 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>หน้าแรก</title>
+    <title>Natnicha Srithorn - IT Student Portfolio</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
-            color: #333;
+            background-color: #0d0e12;
+            color: #f3f4f6;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            padding: 24px;
+            position: relative;
+            overflow-x: hidden;
         }
+
+        /* แสงออร่ามินิมอลด้านหลังการ์ด */
+        .ambient-light {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
         .container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            position: relative;
+            z-index: 1;
+            background: rgba(22, 24, 29, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 52px 44px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: left;
+            max-width: 520px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease;
         }
+
+        .container:hover {
+            transform: translateY(-6px);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        /* ป้าย Status กะพริบ */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
         h1 {
-            color: #4a90e2;
-            margin-bottom: 10px;
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -0.8px;
         }
-        p {
-            font-size: 1.1rem;
-            color: #666;
+
+        .subtitle {
+            font-size: 16px;
+            font-weight: 500;
+            color: #818cf8;
+            margin-bottom: 20px;
+            letter-spacing: -0.2px;
+        }
+
+        .description {
+            font-size: 15px;
+            font-weight: 300;
+            color: #9ca3af;
+            margin-bottom: 28px;
+            line-height: 1.8;
+        }
+
+        /* แท็กทักษะ IT */
+        .skills-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 36px;
+        }
+
+        .skill-tag {
+            font-size: 13px;
+            font-weight: 400;
+            color: #d1d5db;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 5px 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        /* ปุ่มโต้ตอบมีลูกศรเคลื่อนที่ */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background-color: #ffffff;
+            color: #0f172a;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn arrow {
+            transition: transform 0.2s ease;
+        }
+
+        .btn:hover span.arrow {
+            transform: translateX(4px);
         }
     </style>
 </head>
 <body>
+
+    <div class="ambient-light"></div>
+
     <div class="container">
-        <h1>ยินดีต้อนรับสู่เว็บไซต์ของฉัน</h1>
-        <p>สวัสดีค่ะ ฉันชื่อณัฐณิชา ศรีธร</p>
+        <div class="status-badge">
+            <span class="pulse-dot"></span>
+            Information Technology Student
+        </div>
+
+        <h1>Natnicha Srithorn</h1>
+        <div class="subtitle">Tech Enthusiast & Future Developer</div>
+
+        <p class="description">
+            Hello! I am an IT student dedicated to exploring modern technology, software development, and digital solutions. I enjoy building clean, functional websites and continuously learning new skills to bridge creativity with logic.
+        </p>
+
+        <div class="skills-group">
+            <span class="skill-tag">Web Development</span>
+            <span class="skill-tag">Coding</span>
+            <span class="skill-tag">Database Systems</span>
+            <span class="skill-tag">UI/UX Design</span>
+        </div>
+
+        <div class="btn-group">
+            <a href="#" class="btn">
+                Explore Projects
+                <span class="arrow">→</span>
+            </a>
+        </div>
     </div>
+
 </body>
 </html>
